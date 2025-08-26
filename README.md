@@ -1,8 +1,8 @@
-## Varustevahti
+# Varustevahti
 Repository for back end
 
-# Sovelluksen arkkitehtuuri
+## Sovelluksen arkkitehtuuri
 
-# Käytetyt teknologiat
+## Käytetyt teknologiat
 Python
 

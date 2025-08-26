@@ -1,8 +1,8 @@
 # Varustevahti
 Repository for back end
 
-## Sovelluksen arkkitehtuuri
+## application architecture
 
-## Käytetyt teknologiat
-Python
+## Used techologies
+Python for backend and React + vite in user interface
 

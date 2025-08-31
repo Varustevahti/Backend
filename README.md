@@ -8,7 +8,7 @@ On the software you can keep track of your ice hockey gear and where it is locat
 ## Why the project is usefull
 The project is usefull for people with lots of ice hockey gear. For example hockey families, who have many size of hockey gear and as children grow up, it is easy to keep track what you allready have. 
 
-## application architecture
+## Application architecture
 
 <img src="varustevahti_infrastructure.png" alt="first page" width="300"/>
 

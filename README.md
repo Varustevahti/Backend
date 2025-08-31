@@ -4,9 +4,9 @@ Repository for back end
 ## application architecture
 
    [ Frontend ]
- React + TS + Tailwind
+ React + Typescript + Tailwind
           │
-   HTTP (axios/fetch)
+   HTTP (axios)
           │
           ▼
  [ Backend API ]

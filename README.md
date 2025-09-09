@@ -2,8 +2,7 @@
 Repository for back end
 
 ## What the project does
-The application indentifies ice hockey gear from a picture. The you can save the gear and it's info to the software. 
-On the software you can keep track of your ice hockey gear and where it is located.
+The application is a smart inventory tool for tracking personal or shared equipment. Users can add items by taking a photo or selecting from the gallery, fill in details like name, category, location, and attach receipts. Groups make it possible for families or teams to manage shared items together, while the My Items page lets users browse, search, and filter their own gear.
 
 ## Why the project is usefull
 The project is usefull for people with lots of ice hockey gear. For example hockey families, who have many size of hockey gear and as children grow up, it is easy to keep track what you allready have. 

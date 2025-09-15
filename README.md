@@ -11,7 +11,7 @@ The project is usefull for people with lots of ice hockey gear. For example hock
 ```mermaid
 flowchart TB
     subgraph RN ["React Native App (Expo)"]
-      UI["UI & Navigation (React Navigation)"]
+      UI["User interface"]
       SQ["Local History (Expo SQLite)"]
       RQ["React Query (Axios/Fetch)"]
       CAM["Camera / Image Picker"]

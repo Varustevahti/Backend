@@ -34,7 +34,7 @@ flowchart TB
     API --> DB
     API -->|JSON results| RQ
     RQ --> SQ
-...
+```
 
 
 ## Used Technologies

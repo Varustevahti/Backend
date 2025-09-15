@@ -9,7 +9,32 @@ The project is usefull for people with lots of ice hockey gear. For example hock
 
 ## Application architecture
 
-<img src="varustevahti_infrastructure.png" alt="first page" width="300"/>
+```mermaid
+flowchart TB
+    subgraph RN[React Native App (Expo)]
+      UI[UI & Navigation\n(React Navigation)]
+      SQ[Local History\nExpo SQLite]
+      RQ[React Query\n(Axios/Fetch)]
+      CAM[Camera / Image Picker]
+      UI --> CAM
+      UI --> RQ
+      UI --> SQ
+    end
+
+    subgraph API[Backend (FastAPI, Python)]
+      INFER[ML Inference\n(PyTorch)]
+      DB[(DB: SQLite/Postgres)]
+      FS[(Image Storage\n/uploads or cloud)]
+    end
+
+    CAM -->|image (multipart/form-data)| RQ
+    RQ -->|HTTPS POST /images| API
+    API -->|store| FS
+    API -->|run| INFER
+    API -->|save results| DB
+    API -->|JSON results| RQ
+    RQ -->|update UI + cache| SQ
+...
 
 
 ## Used Technologies

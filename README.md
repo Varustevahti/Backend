@@ -18,7 +18,7 @@ flowchart TB
     subgraph RN ["React Native App (Expo)"]
       UI["User interface"]
       SQ["Local History (Expo SQLite)"]
-      RQ["React Query (Axios/Fetch)"]
+      RQ["React Query (Axios)"]
       CAM["Camera / Image Picker"]
       UI --> CAM
       UI --> RQ
@@ -26,9 +26,8 @@ flowchart TB
     end
 
     subgraph API ["Backend (FastAPI, Python)"]
-      INFER["ML Inference (PyTorch)"]
-      DB[("DB: SQLite")]
-      FS[("Image Storage")]
+      INFER["Machine learning Inference (PyTorch)"]
+      DB[("Database: SQLite")]
     end
 
     CAM -->|image upload| RQ

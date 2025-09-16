@@ -62,27 +62,6 @@ flowchart TB
 - **GitHub** – for version control and collaboration.
 - **pytest / Jest** – for testing backend and frontend.
 
-<!-- ## Flow of actions
-
-```mermaid
-sequenceDiagram
-  participant U as User
-  participant App as Expo App
-  participant API as FastAPI
-  participant ML as PyTorch
-  participant DB as Database
-  participant FS as File Storage
--->
-  <!-- U->>App: Take/choose photo
-  App->>API: POST /images
-  API->>FS: Save image
-  API->>ML: Run inference
-  ML-->>API: Labels + confidence
-  API->>DB: Save metadata + results
-  API-->>App: JSON results
-  App->>App: Update UI & cache locally -->
-
-
 ## Mockup pages (made in Google Stitch)
 | First page | Add item page | Groups page |Inside of a group |
 |:-----------|:------------:|------------:|------------:|

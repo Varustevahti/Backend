@@ -59,13 +59,13 @@ flowchart TB
 
 ## Flow of actions
 
-```mermaid
+[```mermaid
 sequenceDiagram
   participant U as User
-  participant App as RN App (Expo)
+  participant App as Expo App
   participant API as FastAPI
   participant ML as PyTorch
-  participant DB as DB
+  participant DB as Database
   participant FS as File Storage
 
   U->>App: Take/choose photo
@@ -77,7 +77,19 @@ sequenceDiagram
   API-->>App: JSON results
   App->>App: Update UI & cache locally
 
-```
+```]: #
+## Mockup pages (made in Google Stitch)
+| First page | Add item page | Groups page |Inside of a group |
+|:-----------|:------------:|------------:|------------:|
+| <img src="Näyttökuva 2025-08-24 kello 19.49.11.png" alt="first page" width="300"/>      | <img src="Näyttökuva 2025-08-24 kello 19.48.30.png" alt="add item page" width="300"/>       | <img src="Näyttökuva 2025-08-24 kello 19.48.50.png" alt="my groups page" width="300"/>|<img src="Näyttökuva 2025-08-24 kello 19.48.57.png" alt="group: soccer teams items page" width="300"/>       |
+
+Colors used
+
+Background color #F8FBFA<br>
+Text color #52946B <br>
+Text color Selected #0D1A12 <br>
+Fill color #EAF2EC <br>
+Button color bright green #71DE86 <br>
 
 
 

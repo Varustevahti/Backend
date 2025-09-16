@@ -81,7 +81,7 @@ sequenceDiagram
 ## Mockup pages (made in Google Stitch)
 | First page | Add item page | Groups page |Inside of a group |
 |:-----------|:------------:|------------:|------------:|
-| <img src="my_items.png" alt="first page" width="300"/>      | <img src="add_item.png" alt="add item page" width="300"/>       | <img src="groups.png" alt="my groups page" width="300"/>|<img src="Soccer_team_group.png" alt="group: soccer teams items page" width="300"/>       |
+| <img src="Näyttökuva 2025-08-24 kello 19.49.11.png" alt="first page" width="300"/>      | <img src="Näyttökuva 2025-08-24 kello 19.48.30.png" alt="add item page" width="300"/>       | <img src="Näyttökuva 2025-08-24 kello 19.48.50.png" alt="my groups page" width="300"/>|<img src="Näyttökuva 2025-08-24 kello 19.48.57.png" alt="group: soccer teams items page" width="300"/>       |
 
 Colors used
 

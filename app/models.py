@@ -1,6 +1,6 @@
 from sqlalchemy import Column, ForeignKey, String, Integer, create_engine
 from sqlalchemy.orm import relationship, declarative_base, sessionmaker
-from database import Base
+from app.database import Base
 
 #https://docs.sqlalchemy.org/en/20/orm/mapping_styles.html#orm-declarative-mapping
 # more constraints will be added, but gotta ponder a bit on that
@@ -11,6 +11,7 @@ class Item(Base):
     location = Column(String, index=True)
     desc = Column(String)
     owner = Column(String)
+    image = Column(String, nullable= True) #image file path
     # foreignkeys
     category_id = Column(Integer, ForeignKey("categories.id"))
     group_id = Column(Integer, ForeignKey("groups.id"))

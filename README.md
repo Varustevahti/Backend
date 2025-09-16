@@ -1,9 +1,9 @@
 # Varustevahti
 
-Nico Pekkanen: Machine learning
-Timo Lampinen: User interface
-Daniel Thagapsov: Backend
-Jeremias Pajari: Development operations
+* Nico Pekkanen: Machine learning
+* Timo Lampinen: User interface
+* Daniel Thagapsov: Backend
+* Jeremias Pajari: Development operations
 
 ## What the project does
 The application is a smart inventory tool for tracking personal or shared equipment. Users can add items by taking a photo or selecting from the gallery, fill in details like name, category, location, and attach receipts. Groups make it possible for families or teams to manage shared items together, while the My Items page lets users browse, search, and filter their own gear.
@@ -72,8 +72,8 @@ sequenceDiagram
   participant ML as PyTorch
   participant DB as Database
   participant FS as File Storage
-
-  U->>App: Take/choose photo
+-->
+  <!-- U->>App: Take/choose photo
   App->>API: POST /images
   API->>FS: Save image
   API->>ML: Run inference

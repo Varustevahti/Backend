@@ -1,5 +1,10 @@
 # Varustevahti
 
+Nico Pekkanen: Machine learning
+Timo Lampinen: User interface
+Daniel Thagapsov: Backend
+Jeremias Pajari: Development operations
+
 ## What the project does
 The application is a smart inventory tool for tracking personal or shared equipment. Users can add items by taking a photo or selecting from the gallery, fill in details like name, category, location, and attach receipts. Groups make it possible for families or teams to manage shared items together, while the My Items page lets users browse, search, and filter their own gear.
 
@@ -57,9 +62,9 @@ flowchart TB
 - **GitHub** – for version control and collaboration.
 - **pytest / Jest** – for testing backend and frontend.
 
-## Flow of actions
+<!-- ## Flow of actions
 
-[```mermaid
+```mermaid
 sequenceDiagram
   participant U as User
   participant App as Expo App
@@ -77,7 +82,7 @@ sequenceDiagram
   API-->>App: JSON results
   App->>App: Update UI & cache locally
 
-```]: #
+``` -->
 ## Mockup pages (made in Google Stitch)
 | First page | Add item page | Groups page |Inside of a group |
 |:-----------|:------------:|------------:|------------:|

@@ -80,8 +80,7 @@ sequenceDiagram
   ML-->>API: Labels + confidence
   API->>DB: Save metadata + results
   API-->>App: JSON results
-  App->>App: Update UI & cache locally
--->
+  App->>App: Update UI & cache locally -->
 
 
 ## Mockup pages (made in Google Stitch)

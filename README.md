@@ -92,7 +92,7 @@ venv\Scripts\Activate
 source venv/bin/activate
 ```
 
-4. Install the requirements
+4. Install the requirements into the virtual environment
 
 ```bash
 pip install -r requirements.txt

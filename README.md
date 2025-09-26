@@ -66,7 +66,46 @@ flowchart TB
 |:-----------|:------------:|------------:|------------:|
 | <img src="Näyttökuva 2025-08-24 kello 19.49.11.png" alt="first page" width="300"/>      | <img src="Näyttökuva 2025-08-24 kello 19.48.30.png" alt="add item page" width="300"/>       | <img src="Näyttökuva 2025-08-24 kello 19.48.50.png" alt="my groups page" width="300"/>|<img src="Näyttökuva 2025-08-24 kello 19.48.57.png" alt="group: soccer teams items page" width="300"/>       |
 
+## Booting instructions
+1. Clone the repository
 
+2. Create a virtual environment
+**Windows**
+```bash
+python -m venv venv
+```
 
+**MacOS/Linux**
+```bash
+python3 -m venv venv
+```
+
+3. Activate the virtual environment
+
+**Windows**
+```bash
+venv\Scripts\Activate
+```
+
+**MacOS/Linux**
+```bash
+source venv/bin/activate
+```
+
+4. Install the requirements
+
+```bash
+pip install -r requirements.txt
+```
+
+5. Run the application
+```bash
+uvicorn app.main:app --reload
+```
+
+6. Testing can be performed using the generated URL
+```bash
+http://127.0.0.1:8000/docs
+```
 
 

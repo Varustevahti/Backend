@@ -66,14 +66,46 @@ flowchart TB
 |:-----------|:------------:|------------:|------------:|
 | <img src="Näyttökuva 2025-08-24 kello 19.49.11.png" alt="first page" width="300"/>      | <img src="Näyttökuva 2025-08-24 kello 19.48.30.png" alt="add item page" width="300"/>       | <img src="Näyttökuva 2025-08-24 kello 19.48.50.png" alt="my groups page" width="300"/>|<img src="Näyttökuva 2025-08-24 kello 19.48.57.png" alt="group: soccer teams items page" width="300"/>       |
 
-Colors used
+## Booting instructions
+1. Clone the repository
 
-Background color #F8FBFA<br>
-Text color #52946B <br>
-Text color Selected #0D1A12 <br>
-Fill color #EAF2EC <br>
-Button color bright green #71DE86 <br>
+2. Create a virtual environment
+**Windows**
+```bash
+python -m venv venv
+```
 
+**MacOS/Linux**
+```bash
+python3 -m venv venv
+```
 
+3. Activate the virtual environment
+
+**Windows**
+```bash
+venv\Scripts\Activate
+```
+
+**MacOS/Linux**
+```bash
+source venv/bin/activate
+```
+
+4. Install the requirements into the virtual environment
+
+```bash
+pip install -r requirements.txt
+```
+
+5. Run the application
+```bash
+uvicorn app.main:app --reload
+```
+
+6. Testing can be performed using the generated URL
+```bash
+http://127.0.0.1:8000/docs
+```
 
 

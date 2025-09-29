@@ -2,7 +2,7 @@ import streamlit as st
 import torch, open_clip, requests, io
 from PIL import Image
 
-st.set_page_config(page_title="Jääkiekko-varusteiden tunnistin (Zero‑Shot CLIP)", layout="centered")
+st.set_page_config(page_title="Varustevahti (Zero‑Shot CLIP)", layout="centered")
 
 @st.cache_resource
 def load_model():
@@ -47,8 +47,8 @@ def read_image(file) -> Image.Image:
     else:
         return Image.open(file).convert("RGB")
 
-st.title("Jääkiekko-varusteiden tunnistin – Zero‑Shot CLIP")
-st.write("Ei tarvetta treenaukselle. Lataa kuva tai anna URL.")
+st.title("Varustevahti – Zero‑Shot CLIP")
+st.write("Lataa kuva tai anna URL.")
 
 model, preprocess, tokenizer, device = load_model()
 text_features = build_text_encodings(model, tokenizer, device)

@@ -1,6 +1,13 @@
-from fastapi import APIRouter, Depends
+# app/routers.py
+from fastapi import APIRouter, Depends, UploadFile, File, Form, HTTPException
 from sqlalchemy.orm import Session
 from app import crud, schemas, database
+
+# Tuo malli AI_Model -kansiosta (varmista AI_Model/__init__.py on olemassa)
+from AI_Model.demo_app_zeroshot import classify_pil, save_upload
+
+from PIL import Image
+import io
 
 router = APIRouter()
 
@@ -11,7 +18,45 @@ def get_db():
     finally:
         db.close()
 
-# Category
+# --- UUSI: Auto-classify & save item ---
+@router.post("/items/auto", response_model=schemas.ItemModel)
+async def create_item_auto(
+    file: UploadFile = File(...),
+    location: str = Form(""),
+    owner: str = Form(""),
+    db: Session = Depends(get_db),
+):
+    if file.content_type and not file.content_type.startswith("image/"):
+        raise HTTPException(status_code=415, detail="Only image uploads are supported.")
+
+    try:
+        # 1) Lue ja tallenna kuva
+        content = await file.read()
+        image_path = save_upload(content, upload_dir="uploads")
+
+        # 2) Luokittelu (paras label + paketin nimi)
+        img = Image.open(io.BytesIO(content)).convert("RGB")
+        best_label, prob, pack, _topk = classify_pil(img, topk=5)
+
+        # 3) Hae/luo Category & Group paketin nimellä
+        cat = crud.get_or_create_category(db, pack)
+        grp = crud.get_or_create_group(db, pack)
+
+        # 4) Talleta Item – desc = paras label, image = polku
+        item_in = schemas.ItemBase(
+            location=location,
+            desc=best_label,
+            owner=owner,
+            category_id=cat.id,
+            group_id=grp.id,
+            image=image_path,
+        )
+        return crud.create_item(db, item_in)
+
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Classification failed: {e}")
+
+# --- Olemassa olevat CRUD-reitit ---
 @router.post("/categories/", response_model=schemas.CategoryModel)
 def create_category(category: schemas.CategoryBase, db: Session = Depends(get_db)):
     return crud.create_category(db, category)
@@ -20,7 +65,6 @@ def create_category(category: schemas.CategoryBase, db: Session = Depends(get_db
 def get_categories(db: Session = Depends(get_db)):
     return crud.get_categories(db)
 
-# Group
 @router.post("/groups/", response_model=schemas.GroupModel)
 def create_group(group: schemas.GroupBase, db: Session = Depends(get_db)):
     return crud.create_group(db, group)
@@ -29,7 +73,6 @@ def create_group(group: schemas.GroupBase, db: Session = Depends(get_db)):
 def get_groups(db: Session = Depends(get_db)):
     return crud.get_groups(db)
 
-# Item
 @router.post("/items/", response_model=schemas.ItemModel)
 def create_item(item: schemas.ItemBase, db: Session = Depends(get_db)):
     return crud.create_item(db, item)

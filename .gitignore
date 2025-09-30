@@ -1,6 +1,4 @@
 venv
-.venv
-uploads
 varustevahti.db
 app/varustevahti.db
 __pycache__

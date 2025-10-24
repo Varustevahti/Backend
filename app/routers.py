@@ -22,6 +22,7 @@ def get_db():
 @router.post("/items/auto", response_model=schemas.ItemModel)
 async def create_item_auto(
     file: UploadFile = File(...),
+    name: str = Form(...),
     location: str = Form(""),
     owner: str = Form(""),
     db: Session = Depends(get_db),
@@ -44,6 +45,7 @@ async def create_item_auto(
 
         # 4) Talleta Item – desc = paras label, image = polku
         item_in = schemas.ItemBase(
+            name=name,
             location=location,
             desc=best_label,
             owner=owner,
@@ -88,3 +90,32 @@ def get_items_by_category(category_id: int, db: Session = Depends(get_db)):
 @router.get("/items/group/{group_id}", response_model=list[schemas.ItemModel])
 def get_items_by_group(group_id: int, db: Session = Depends(get_db)):
     return crud.get_items_by_group(db, group_id)
+
+@router.put("/items/{item_id}", response_model=schemas.ItemModel)
+def update_item(item_id: int, item_update: schemas.ItemUpdate, db: Session = Depends(get_db)):
+    updated = crud.update_item(db, item_id, item_update)
+    if not updated:
+        raise HTTPException(status_code=404, detail="Item not found")
+    return updated
+
+@router.delete("/items/{item_id}")
+def delete_item(item_id: int, db: Session = Depends(get_db)):
+    deleted = crud.delete_item(db, item_id)
+    if not deleted:
+        raise HTTPException(status_code=404, detail="Item not found")
+    return {"Item deleted"}
+
+@router.get("/items/market", response_model=list[schemas.ItemModel])
+def get_marketplace(db: Session = Depends(get_db)):
+    return crud.get_marketplace_items(db)
+
+@router.get("/items/recent", response_model=list[schemas.ItemModel])
+def get_recent_items(db: Session = Depends(get_db), limit: int = 10):
+    return crud.get_recent_items(db, limit=limit)
+
+@router.post("/items/{item_id}/post_to_market", response_model=schemas.ItemModel)
+def post_item_to_market(item_id: int, price: float = Form(...), db: Session = Depends(get_db)):
+    item = crud.post_item_to_market(db, item_id, price)
+    if not item:
+        raise HTTPException(status_code=404, detail="Item not found")
+    return item

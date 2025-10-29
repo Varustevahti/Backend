@@ -7,14 +7,10 @@ from app import routers, models
 
 app = FastAPI()
 
-# CORS
-origins = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-]
+# --- CORS: salli mobiililaitteet ja LAN ---
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],  # yksinkertaisin ja varmin devissä
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -26,3 +22,8 @@ models.Base.metadata.create_all(bind=engine)
 
 # Palvele ladatut kuvat
 app.mount("/uploads", StaticFiles(directory="uploads", check_dir=False), name="uploads")
+
+# Terveystsekki
+@app.get("/health")
+def health():
+    return {"ok": True}

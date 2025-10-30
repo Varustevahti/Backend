@@ -12,7 +12,7 @@ class Item(Base):
     name = Column(String, nullable = False)
     location = Column(String, index=True)
     desc = Column(String)                 # mallitulos (label)
-    owner = Column(String)
+    owner = Column(String, nullable=False) #Yhdistetään tähän clerkin user_id
     image = Column(String, nullable=True) # image file path
     size = Column(String, nullable=True)
     on_market_place = Column(Integer, default=0)           # NEW: 0=not, 1=on market, 2=sold

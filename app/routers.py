@@ -1,7 +1,7 @@
 # app/routers.py
 from fastapi import APIRouter, Depends, UploadFile, File, Form, HTTPException
 from sqlalchemy.orm import Session
-from app import crud, schemas, database
+from app import crud, schemas, database, auth
 
 # Tuo malli AI_Model -kansiosta (varmista AI_Model/__init__.py on olemassa)
 from AI_Model.demo_app_zeroshot import classify_pil, save_upload
@@ -24,7 +24,7 @@ async def create_item_auto(
     file: UploadFile = File(...),
     name: str = Form(...),
     location: str = Form(""),
-    owner: str = Form(""),
+    owner: str = Depends(get_current_user_id),
     db: Session = Depends(get_db),
 ):
     if file.content_type and not file.content_type.startswith("image/"):
@@ -48,12 +48,11 @@ async def create_item_auto(
             name=name,
             location=location,
             desc=best_label,
-            owner=owner,
             category_id=cat.id,
             group_id=grp.id,
             image=image_path,
         )
-        return crud.create_item(db, item_in)
+        return crud.create_item(db, item_in, owner_id=user_id)
 
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Classification failed: {e}")
@@ -76,31 +75,31 @@ def get_groups(db: Session = Depends(get_db)):
     return crud.get_groups(db)
 
 @router.post("/items/", response_model=schemas.ItemModel)
-def create_item(item: schemas.ItemBase, db: Session = Depends(get_db)):
-    return crud.create_item(db, item)
+def create_item(item: schemas.ItemBase, db: Session = Depends(get_db), user_id:str = Depends(get_current_user_id)):
+    return crud.create_item(db, item, owner_id=user_id)
 
 @router.get("/items/", response_model=list[schemas.ItemModel])
-def get_items(db: Session = Depends(get_db)):
-    return crud.get_items(db)
+def get_items(db: Session = Depends(get_db), user_id: str = Depends(get_current_user_id)):
+    return crud.get_items(db, owner_id=user_id)
 
 @router.get("/items/category/{category_id}", response_model=list[schemas.ItemModel])
-def get_items_by_category(category_id: int, db: Session = Depends(get_db)):
-    return crud.get_items_by_category(db, category_id)
+def get_items_by_category(category_id: int, db: Session = Depends(get_db), user_id: str = Depends(get_current_user_id)):
+    return crud.get_items_by_category(db, category_id, owner_id=user_id)
 
 @router.get("/items/group/{group_id}", response_model=list[schemas.ItemModel])
-def get_items_by_group(group_id: int, db: Session = Depends(get_db)):
-    return crud.get_items_by_group(db, group_id)
+def get_items_by_group(group_id: int, db: Session = Depends(get_db), user_id: str = Depends(get_current_user_id)):
+    return crud.get_items_by_group(db, group_id, owner_id=user_id)
 
 @router.put("/items/{item_id}", response_model=schemas.ItemModel)
-def update_item(item_id: int, item_update: schemas.ItemUpdate, db: Session = Depends(get_db)):
-    updated = crud.update_item(db, item_id, item_update)
+def update_item(item_id: int, item_update: schemas.ItemUpdate, db: Session = Depends(get_db, user_id: str = Depends(get_current_user_id)):
+    updated = crud.update_item(db, item_id, item_update, owner_id=user_id))
     if not updated:
         raise HTTPException(status_code=404, detail="Item not found")
     return updated
 
 @router.delete("/items/{item_id}")
-def delete_item(item_id: int, db: Session = Depends(get_db)):
-    deleted = crud.delete_item(db, item_id)
+def delete_item(item_id: int, db: Session = Depends(get_db), user_id: str = Depends(get_current_user_id):
+    deleted = crud.delete_item(db, item_id, owner_id=user_id))
     if not deleted:
         raise HTTPException(status_code=404, detail="Item not found")
     return {"Item deleted"}

@@ -25,7 +25,7 @@ class ItemBase(BaseModel):
     name: str
     location: str
     desc: str
-    owner: str
+    #Ei pyydetä owneria clientiltä vaan automaatisesti backendistä
     category_id: int
     group_id: int
     image: Optional[str] = None
@@ -47,6 +47,7 @@ class ItemUpdate(BaseModel):
 
 class ItemModel(ItemBase):
     id: int
+    owner: str
     timestamp: Optional[datetime]
     
     class Config:

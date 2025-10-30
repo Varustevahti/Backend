@@ -93,7 +93,7 @@ def get_marketplace_items(db: Session):
     return db.query(models.Item).filter(models.Item.on_market_place == 1).all()
 
 def get_recent_items(db: Session, limit: int = 10): #set the limit for how many items you need returned, wasnt sure, so 10 it is. also change this in routers.py if you wanna change it
-    return db.query(models.Item).order_by(desc(models.Item.created_at)).limit(limit).all()
+    return db.query(models.Item).order_by(desc(models.Item.timestamp)).limit(limit).all()
 
 def post_item_to_market(db: Session, item_id: int, price: float):
     db_item = db.query(models.Item).filter(models.Item.id == item_id).first()

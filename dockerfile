@@ -33,6 +33,9 @@ COPY AI_Model ./AI_Model
 # making folder for save_upload to save pictures, -p flag creates them if they do not already exist.
 RUN mkdir -p /app/uploads
 
+# Database path
+ENV DATABASE_URL=sqlite:///./varustevahti.db
+
 # Using uvicorn to start application, listening everywhere and use Render given port or if not given then port 8000
 ENV PORT=8000
 CMD ["uvicorn", "app.main:app", "--reload", "--host", "0.0.0.0", "--port", "8000"]

@@ -28,3 +28,9 @@ requests
 beautifulsoup4
 streamlit
 timm
+SQLAlchemy
+python-jose
+uvicorn
+pydantic
+httpx
+python-multipart

@@ -31,11 +31,13 @@ COPY app ./app
 COPY AI_Model ./AI_Model
 
 # making folder for save_upload to save pictures, -p flag creates them if they do not already exist.
-RUN mkdir -p /app/uploads
+RUN mkdir -p /app/data /app/uploads \
+ && chgrp -R 0 /app \
+ && chmod -R g=u /app
 
 # Database path
 ENV DATABASE_URL=sqlite:///./varustevahti.db
 
 # Using uvicorn to start application, listening everywhere and use Render given port or if not given then port 8000
-EXPOSE PORT=8080
+
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8080"]

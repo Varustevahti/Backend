@@ -107,5 +107,8 @@ uvicorn app.main:app --reload
 ```bash
 http://127.0.0.1:8000/docs
 ```
+**Docker**
+build: docker build -t varustevahti-backend .
+sun: docker run -p 8080:8000 varustevahti-backend
 
 

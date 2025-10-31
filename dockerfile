@@ -37,5 +37,5 @@ RUN mkdir -p /app/uploads
 ENV DATABASE_URL=sqlite:///./varustevahti.db
 
 # Using uvicorn to start application, listening everywhere and use Render given port or if not given then port 8000
-ENV PORT=8080
+EXPOSE PORT=8080
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8080"]

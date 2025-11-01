@@ -1,0 +1,14 @@
+name: Rahti deployment on push to main
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: deployment
+        env:
+          deploy_url: ${{ secrets.RAHTI_WEBHOOK_URL }}
+        run: |
+          curl "$deploy_url"

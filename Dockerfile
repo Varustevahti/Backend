@@ -10,6 +10,8 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 # All commands about to happen happens in this directory
 WORKDIR /app
 
+ENV HOME=/app
+
 # Linux commads, for upgrade and install, flags first mean yes and second not to install "recommended dependencies packages" making it lighter. 
 # Source: "https://ubuntu.com/blog/we-reduced-our-docker-images-by-60-with-no-install-recommends"
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -31,7 +33,8 @@ COPY app ./app
 COPY AI_Model ./AI_Model
 
 # making folder for save_upload to save pictures, -p flag creates them if they do not already exist.
-RUN mkdir -p /app/data /app/uploads \
+RUN mkdir -p /app/uploads /app/.cache/torch /app/.cache/huggingface/hub \
+ && touch /app/varustevahti.db \
  && chgrp -R 0 /app \
  && chmod -R g=u /app
 
@@ -39,5 +42,5 @@ RUN mkdir -p /app/data /app/uploads \
 ENV DATABASE_URL=sqlite:///./varustevahti.db
 
 # Using uvicorn to start application, listening everywhere and use Render given port or if not given then port 8000
-
+EXPOSE 8080
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8080"]

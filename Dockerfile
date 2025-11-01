@@ -11,6 +11,11 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 WORKDIR /app
 
 ENV HOME=/app
+ENV XDG_CACHE_HOME=/app/.cache
+ENV TORCH_HOME=/app/.cache/torch
+ENV HF_HOME=/app/.cache/huggingface
+ENV TRANSFORMERS_CACHE=/app/.cache/huggingface/hub
+ENV HUGGINGFACE_HUB_CACHE=/app/.cache/huggingface/hub
 
 # Linux commads, for upgrade and install, flags first mean yes and second not to install "recommended dependencies packages" making it lighter. 
 # Source: "https://ubuntu.com/blog/we-reduced-our-docker-images-by-60-with-no-install-recommends"
@@ -24,7 +29,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY requirements.txt .
 
 # install and upgrade pip and then install requirements file
-RUN python -m pip install --upgrade pip && pip install -r requirements.txt
+RUN python -m pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
 
 # copy app to image
 COPY app ./app
@@ -33,10 +38,10 @@ COPY app ./app
 COPY AI_Model ./AI_Model
 
 # making folder for save_upload to save pictures, -p flag creates them if they do not already exist.
-RUN mkdir -p /app/uploads /app/.cache/torch /app/.cache/huggingface/hub \
+RUN mkdir -p /app/uploads /app/.cache/torch /app/.cache/huggingface/hub /.cache \
  && touch /app/varustevahti.db \
- && chgrp -R 0 /app \
- && chmod -R g=u /app
+ && chgrp -R 0 /app /.cache \
+ && chmod -R g=u /app /.cache
 
 # Database path
 ENV DATABASE_URL=sqlite:///./varustevahti.db

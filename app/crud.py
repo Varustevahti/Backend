@@ -3,6 +3,29 @@ from sqlalchemy.orm import Session
 from app import models, schemas
 from sqlalchemy import desc
 
+# ---------- Users ----------
+def upsert_user(db: Session, data: schemas.UserUpsert) -> models.User:
+    u = db.query(models.User).filter(models.User.clerk_id == data.clerk_id).first()
+    if u:
+        if data.email:
+            u.email = data.email
+        if data.name:
+            u.name = data.name
+    else:
+        u = models.User(clerk_id=data.clerk_id, email=data.email, name=data.name)
+        db.add(u)
+    db.commit()
+    db.refresh(u)
+    return u
+
+def get_user_by_email(db: Session, email: str):
+    return db.query(models.User).filter(models.User.email == email).first()
+
+def get_user_by_clerk_id(db: Session, clerk_id: str):
+    return db.query(models.User).filter(models.User.clerk_id == clerk_id).first()
+
+
+
 # --- helpers: get-or-create by name ---
 def get_category_by_name(db: Session, name: str):
     return db.query(models.Category).filter(models.Category.name == name).first()
@@ -41,16 +64,53 @@ def create_category(db: Session, category: schemas.CategoryBase):
 def get_categories(db: Session):
     return db.query(models.Category).all()
 
-# --- Group ---
-def create_group(db: Session, group: schemas.GroupBase):
-    db_group = models.Group(**group.model_dump())
-    db.add(db_group)
+# ---------- Group ----------
+def create_group(db: Session, owner: models.User, name: str):
+    grp = models.Group(name=name)
+    db.add(grp)
     db.commit()
-    db.refresh(db_group)
-    return db_group
+    db.refresh(grp)
 
-def get_groups(db: Session):
-    return db.query(models.Group).all()
+    gm = models.GroupMember(group_id=grp.id, user_id=owner.id, role="owner")
+    db.add(gm)
+    db.commit()
+    return grp
+
+def list_user_groups(db: Session, user: models.User):
+    return (
+        db.query(models.Group)
+        .join(models.GroupMember, models.Group.id == models.GroupMember.group_id)
+        .filter(models.GroupMember.user_id == user.id)
+        .all()
+    )
+
+def group_members(db: Session, group_id: int):
+    return db.query(models.GroupMember).filter(models.GroupMember.group_id == group_id).all()
+
+def invite_to_group(db: Session, group: models.Group, email: str):
+    user = get_user_by_email(db, email)
+    if user:
+        existing = (
+            db.query(models.GroupMember)
+            .filter(models.GroupMember.group_id == group.id, models.GroupMember.user_id == user.id)
+            .first()
+        )
+        if not existing:
+            gm = models.GroupMember(group_id=group.id, user_id=user.id, role="member")
+            db.add(gm)
+            db.commit()
+        inv = models.GroupInvitation(group_id=group.id, email=email, invited_user_id=user.id, status="accepted")
+        db.add(inv)
+        db.commit()
+        db.refresh(inv)
+        return inv
+    else:
+        inv = models.GroupInvitation(group_id=group.id, email=email, invited_user_id=None, status="pending")
+        db.add(inv)
+        db.commit()
+        db.refresh(inv)
+        return inv
+
 
 # --- Location ---
 def get_locations(db: Session):
@@ -128,3 +188,15 @@ def post_item_to_market(db: Session, item_id: int, price: float):
     db.commit()
     db.refresh(db_item)
     return db_item
+
+def get_items_for_owner(db: Session, owner_clerk_id: str):
+    return db.query(models.Item).filter(models.Item.owner == owner_clerk_id).all()
+
+def get_items_by_category_for_owner(db: Session, category_id: int, owner_clerk_id: str):
+    return db.query(models.Item).filter(models.Item.category_id == category_id, models.Item.owner == owner_clerk_id).all()
+
+def get_items_by_group_for_owner(db: Session, group_id: int, owner_clerk_id: str):
+    return db.query(models.Item).filter(models.Item.group_id == group_id, models.Item.owner == owner_clerk_id).all()
+
+def get_items_by_location_for_owner(db: Session, loc_id: int, owner_clerk_id: str):
+    return db.query(models.Item).filter(models.Item.location_id == loc_id, models.Item.owner == owner_clerk_id).all()

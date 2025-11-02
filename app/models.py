@@ -1,6 +1,6 @@
 # app/models.py
 from sqlalchemy import Column, Integer, String, ForeignKey
-from sqlalchemy import Column, ForeignKey, String, Integer, Float, DateTime
+from sqlalchemy import Column, ForeignKey, String, Integer, Float, DateTime, UniqueConstraint
 from sqlalchemy.orm import relationship
 from app.database import Base
 from sqlalchemy.sql import func
@@ -22,10 +22,12 @@ class Item(Base):
     timestamp = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
     # foreign keys
     category_id = Column(Integer, ForeignKey("categories.id"))
-    group_id = Column(Integer, ForeignKey("groups.id"))
+    group_id = Column(Integer, ForeignKey("groups.id"), nullable=True)
+    location_id = Column(Integer, ForeignKey("locations.id"), nullable=True)
     # relationships
-    category = relationship("Category", back_populates="items")
-    group = relationship("Group", back_populates="items")
+    category_rel = relationship("Category", back_populates="items")
+    group_rel = relationship("Group", back_populates="items")
+    location_rel = relationship("Location", back_populates="items")
 
 class Category(Base):
     __tablename__ = "categories"
@@ -42,6 +44,9 @@ class Group(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, unique=True, index=True)
 
+    members = relationship("GroupMember", back_populates="group", cascade="all, delete-orphan")
+    invitations = relationship("GroupInvitation", back_populates="group", cascade="all, delete-orphan")
+
     items = relationship("Item", back_populates="group_rel")
 
 # --- Location ---
@@ -55,20 +60,41 @@ class Location(Base):
 
     items = relationship("Item", back_populates="location_rel")
 
-# --- Item ---
-class Item(Base):
-    __tablename__ = "items"
+# --- User (Clerk-peilaus) ---
+class User(Base):
+    __tablename__ = "users"
+    id = Column(Integer, primary_key=True, index=True)
+    clerk_id = Column(String, unique=True, index=True, nullable=False)
+    email = Column(String, index=True, nullable=True)
+    name = Column(String, nullable=True)
+
+    memberships = relationship("GroupMember", back_populates="user", cascade="all, delete-orphan")
+    invitations = relationship("GroupInvitation", back_populates="invited_user", cascade="all, delete-orphan")
+
+    # --- GroupMember (many-to-many User<->Group) ---
+class GroupMember(Base):
+    __tablename__ = "group_members"
 
     id = Column(Integer, primary_key=True, index=True)
-    desc = Column(String, nullable=True)           # tunnistettu nimi / kuvaus
-    image = Column(String, nullable=True)          # esim. uploads/xxx.jpg
-    owner = Column(String, nullable=True)
-    location = Column(String, nullable=True)       # legacy string (saa jäädä)
+    group_id = Column(Integer, ForeignKey("groups.id"), nullable=False)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    role = Column(String, default="member")  # "owner" | "member"
 
-    category_id = Column(Integer, ForeignKey("categories.id"), nullable=True)
-    group_id = Column(Integer, ForeignKey("groups.id"), nullable=True)
-    location_id = Column(Integer, ForeignKey("locations.id"), nullable=True)
+    __table_args__ = (UniqueConstraint("group_id", "user_id", name="uq_group_user"),)
 
-    category_rel = relationship("Category", back_populates="items")
-    group_rel = relationship("Group", back_populates="items")
-    location_rel = relationship("Location", back_populates="items")
+    group = relationship("Group", back_populates="members")
+    user = relationship("User", back_populates="memberships")
+
+# --- Invitation (pending or accepted) ---
+class GroupInvitation(Base):
+    __tablename__ = "group_invitations"
+
+    id = Column(Integer, primary_key=True, index=True)
+    group_id = Column(Integer, ForeignKey("groups.id"), nullable=False)
+    email = Column(String, nullable=False)
+    invited_user_id = Column(Integer, ForeignKey("users.id"), nullable=True)
+    status = Column(String, default="pending")  # pending | accepted | revoked
+
+    group = relationship("Group", back_populates="invitations")
+    invited_user = relationship("User", back_populates="invitations")
+

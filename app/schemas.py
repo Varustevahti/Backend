@@ -1,8 +1,19 @@
 # app/schemas.py
-from typing import Optional
+from typing import Optional, List
 from pydantic import BaseModel
 from typing import Optional
 from datetime import datetime
+
+# ---- Users ----
+class UserUpsert(BaseModel):
+    clerk_id: str
+    email: Optional[str] = None
+    name: Optional[str] = None
+
+class UserModel(UserUpsert):
+    id: int
+    class Config:
+        from_attributes = True
 
 # --- Category ---
 class CategoryBase(BaseModel):
@@ -21,6 +32,27 @@ class GroupModel(GroupBase):
     id: int
     class Config:
         from_attributes = True
+
+class GroupMemberModel(BaseModel):
+    id: int
+    group_id: int
+    user_id: int
+    role: str = "member"
+    class Config:
+        from_attributes = True
+
+class GroupInviteCreate(BaseModel):
+    email: str
+
+class GroupInviteModel(BaseModel):
+    id: int
+    group_id: int
+    email: str
+    invited_user_id: Optional[int] = None
+    status: str
+    class Config:
+        from_attributes = True
+
 
 # --- Location ---
 class LocationBase(BaseModel):
@@ -51,38 +83,24 @@ class ItemBase(BaseModel):
 
 class ItemModel(ItemBase):
     id: int
+    class Config:
+        from_attributes = True
 
 class ItemUpdate(BaseModel):
     desc: Optional[str] = None
     category_id: Optional[int] = None
     location_id: Optional[int] = None
     owner: Optional[str] = None
-    name: str
-    location: str
-    desc: str
-    owner: str
-    category_id: int
-    group_id: int
-    image: Optional[str] = None
-    size: Optional[str] = None
-    on_market_place: Optional[int] = 0
-    price: Optional[float] = None
-
-class ItemUpdate(BaseModel):
     name: Optional[str] = None
     location: Optional[str] = None
     desc: Optional[str] = None
     owner: Optional[str] = None
+    category_id: Optional[int] = None
+    group_id: Optional[int] = None
     image: Optional[str] = None
     size: Optional[str] = None
     on_market_place: Optional[int] = None
     price: Optional[float] = None
-    category_id: Optional[int] = None
-    group_id: Optional[int] = None
 
-class ItemModel(ItemBase):
-    id: int
-    timestamp: Optional[datetime]
-    
-    class Config:
-        orm_mode = True
+
+

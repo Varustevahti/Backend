@@ -73,7 +73,7 @@ def update_item(db: Session, item_id: int, item_update: schemas.ItemUpdate):
     db_item = db.query(models.Item).filter(models.Item.id == item_id).first()
     if not db_item:
         return None
-    allowed_fields = ["name", "location", "owner", "size", "desc"]
+    allowed_fields = ["name", "location","desc", "owner", "size", "desc", "category_id", "group_id", "size", "price", "on_market_place"]
     for key in allowed_fields:
         if key in item_update.model_dump(exclude_unset=True):
             setattr(db_item, key, getattr(item_update, key))

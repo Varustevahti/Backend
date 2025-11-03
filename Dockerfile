@@ -11,15 +11,14 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 WORKDIR /workspace
 
 ENV HOME=/workspace
+# Linux user´s directory path for non-essential, cached data
 ENV XDG_CACHE_HOME=/workspace/.cache
+# Pytorch cache env path
 ENV TORCH_HOME=/workspace/.cache/torch
 
 # Linux commads, for upgrade and install, flags first mean yes and second not to install "recommended dependencies packages" making it lighter. 
 # Source: "https://ubuntu.com/blog/we-reduced-our-docker-images-by-60-with-no-install-recommends"
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    git \
-    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends && rm -rf /var/lib/apt/lists/*
 # Needed if pip-packages needs to be converted and git, because open_clip_torch gets model weigths from Github
 # Deletes caches, for again making image lighter
 # Copying file to image, so pip can install
@@ -35,11 +34,10 @@ COPY app ./app
 COPY AI_Model ./AI_Model
 
 # making folder for save_upload to save pictures, -p flag creates them if they do not already exist.
-RUN mkdir -p /workspace/uploads /workspace/.cache/torch /.cache \
- && touch /workspace/varustevahti.db \
+RUN mkdir -p /workspace/uploads /workspace/.cache/torch \
  && chgrp -R 0 /workspace /.cache \
  && chmod -R g=u /workspace /.cache
-
+#Changed workspaces group to same as OpenShifts default root group (0) and the gave group file owner permissions for write access
 # Database path
 ENV DATABASE_URL=sqlite:///./varustevahti.db
 

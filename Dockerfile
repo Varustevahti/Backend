@@ -16,11 +16,6 @@ ENV XDG_CACHE_HOME=/workspace/.cache
 # Pytorch cache env path
 ENV TORCH_HOME=/workspace/.cache/torch
 
-# Linux commads, for upgrade and install, flags first mean yes and second not to install "recommended dependencies packages" making it lighter. 
-# Source: "https://ubuntu.com/blog/we-reduced-our-docker-images-by-60-with-no-install-recommends"
-RUN apt-get update && apt-get install -y --no-install-recommends && rm -rf /var/lib/apt/lists/*
-# Needed if pip-packages needs to be converted and git, because open_clip_torch gets model weigths from Github
-# Deletes caches, for again making image lighter
 # Copying file to image, so pip can install
 COPY requirements.txt .
 

@@ -16,6 +16,13 @@ ENV XDG_CACHE_HOME=/workspace/.cache
 # Pytorch cache env path
 ENV TORCH_HOME=/workspace/.cache/torch
 
+# Linux commads, for upgrade and install, flags first mean yes and second not to install "recommended dependencies packages" making it lighter. 
+# Source: "https://ubuntu.com/blog/we-reduced-our-docker-images-by-60-with-no-install-recommends"
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
 # Copying file to image, so pip can install
 COPY requirements.txt .
 
@@ -29,9 +36,9 @@ COPY app ./app
 COPY AI_Model ./AI_Model
 
 # making folder for save_upload to save pictures, -p flag creates them if they do not already exist.
-RUN mkdir -p /workspace/uploads /workspace/.cache/torch \
- && chgrp -R 0 /workspace \
- && chmod -R g=u /workspace
+RUN mkdir -p /workspace/uploads /workspace/.cache/torch /.cache\
+ && chgrp -R 0 /workspace /.cache \
+ && chmod -R g=u /workspace /.cache
 #Changed workspaces group to same as OpenShifts default root group (0) and the gave group file owner permissions for write access
 # Database path
 ENV DATABASE_URL=sqlite:///./varustevahti.db

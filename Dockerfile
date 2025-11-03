@@ -35,8 +35,8 @@ COPY AI_Model ./AI_Model
 
 # making folder for save_upload to save pictures, -p flag creates them if they do not already exist.
 RUN mkdir -p /workspace/uploads /workspace/.cache/torch \
- && chgrp -R 0 /workspace /.cache \
- && chmod -R g=u /workspace /.cache
+ && chgrp -R 0 /workspace \
+ && chmod -R g=u /workspace
 #Changed workspaces group to same as OpenShifts default root group (0) and the gave group file owner permissions for write access
 # Database path
 ENV DATABASE_URL=sqlite:///./varustevahti.db

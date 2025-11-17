@@ -11,4 +11,4 @@ jobs:
         env:
           deploy_url: ${{ secrets.RAHTI_WEBHOOK_URL }}
         run: |
-          curl "$deploy_url"
+          curl -X POST "$deploy_url"

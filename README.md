@@ -16,6 +16,19 @@ The project is usefull for people with lots of inventory but dont know where the
 Frontend repository:
 https://github.com/Varustevahti/Frontend
 
+### Used Technologies
+
+- **React Native, Expo** – Framework building the mobile app.
+   (Documentation: https://docs.expo.dev/)
+- **React Navigation** – Navigation between screens.
+  (Documentation: https://reactnavigation.org/docs/getting-started/)
+- **React Native Paper** – to style the mobile app.
+  (Documentation: https://callstack.github.io/react-native-paper/)
+- **Axios** – For making HTTP requests to the backend API.
+  (Documentation: https://axios-http.com/docs/intro)
+- **Expo SQLite** - For local history storage inside the app.
+  (Documentation: https://docs.expo.dev/versions/latest/sdk/sqlite/)
+  
 ### Mockup pages (made in Google Stitch)
 | First page | Add item page | Groups page |Inside of a group |
 |:-----------|:------------:|------------:|------------:|
@@ -76,13 +89,7 @@ CLERK_JWKS_URL=YourOwnJWKSURL
 
 ## Backend (FastAPI, Python)
 
-### Used Technologies
 
-- **React Native, Expo** – Framework building the mobile app.
-- **React Navigation** – Navigation between screens.
-- **React Native Paper** – to style the mobile app.
-- **Axios** – For making HTTP requests to the backend API.
-- **Expo SQLite** - For local history storage inside the app.
 
 ### Application architecture
 
@@ -155,18 +162,23 @@ sequenceDiagram
 
 
 #### Used technologies
-- **FastAPI (Python)** – backend API that receives images and returns recognition results. 
+- **FastAPI (Python)** – backend API that receives images and returns recognition results.
+  (Documentation: https://fastapi.tiangolo.com/)
 - **SQLite** – database for storing items and recognition history.
+  (Documentation: https://sqlite.org/docs.html)
 
 #### Machine Learning
 - **PyTorch** – to load and run the image recognition model.
+  (Documentation: https://docs.pytorch.org/tutorials/index.html)
 
 #### Tools
-- **Docker** – to setup backend, machine learning and frontend all in one. 
+- **Docker** – to setup backend, machine learning and frontend all in one.
+  (Documentation: https://docs.docker.com/)
 - **GitHub** – for version control and collaboration.
+  (Documentation: https://docs.github.com/en)
 - **CSC Rahti** - Deployment
+  (Documentation: https://docs.csc.fi/cloud/rahti/)
 
-   |
 
 ## Running backend locally
 1. Clone the repository

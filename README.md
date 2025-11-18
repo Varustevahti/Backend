@@ -19,14 +19,23 @@ https://github.com/Varustevahti/Frontend
 ### Used Technologies
 
 - **React Native, Expo** – Framework building the mobile app.
+  
    (Documentation: https://docs.expo.dev/)
+  
 - **React Navigation** – Navigation between screens.
+  
   (Documentation: https://reactnavigation.org/docs/getting-started/)
+  
 - **React Native Paper** – to style the mobile app.
+  
   (Documentation: https://callstack.github.io/react-native-paper/)
+  
 - **Axios** – For making HTTP requests to the backend API.
+  
   (Documentation: https://axios-http.com/docs/intro)
+  
 - **Expo SQLite** - For local history storage inside the app.
+  
   (Documentation: https://docs.expo.dev/versions/latest/sdk/sqlite/)
   
 ### Mockup pages (made in Google Stitch)
@@ -70,13 +79,19 @@ npm install @react-navigation/native-stack @react-navigation/bottom-tabs
 ### To stars the project 
 npx expo start
 
-with iOS-emulator
+with
+
+iOS-emulator
 npx expo run:ios
 
-Or Android-emulator
+Or
+
+Android-emulator
 npx expo run:android
 
-Or scan the QR code using Expo Go
+Or
+
+scan the QR code using Expo Go
 
 ### If you want authentication
 You have to create .env file, and add your Clerk credentials to it.
@@ -163,20 +178,29 @@ sequenceDiagram
 
 #### Used technologies
 - **FastAPI (Python)** – backend API that receives images and returns recognition results.
+  
   (Documentation: https://fastapi.tiangolo.com/)
+  
 - **SQLite** – database for storing items and recognition history.
+  
   (Documentation: https://sqlite.org/docs.html)
 
 #### Machine Learning
 - **PyTorch** – to load and run the image recognition model.
+  
   (Documentation: https://docs.pytorch.org/tutorials/index.html)
 
 #### Tools
 - **Docker** – to setup backend, machine learning and frontend all in one.
+  
   (Documentation: https://docs.docker.com/)
+  
 - **GitHub** – for version control and collaboration.
+  
   (Documentation: https://docs.github.com/en)
+  
 - **CSC Rahti** - Deployment
+  
   (Documentation: https://docs.csc.fi/cloud/rahti/)
 
 

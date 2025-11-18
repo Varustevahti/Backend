@@ -157,16 +157,14 @@ sequenceDiagram
 #### Used technologies
 - **FastAPI (Python)** – backend API that receives images and returns recognition results. 
 - **SQLite** – database for storing items and recognition history.
-- **Docker** - Used for containerization.
-- **CSC Rahti** - Deployment
 
 #### Machine Learning
 - **PyTorch** – to load and run the image recognition model.
 
 #### Tools
-- **Docker / Docker Compose** – to setup backend, machine learning and frontend all in one. 
+- **Docker** – to setup backend, machine learning and frontend all in one. 
 - **GitHub** – for version control and collaboration.
-- **pytest / Jest** – for testing backend and frontend.
+- **CSC Rahti** - Deployment
 
    |
 

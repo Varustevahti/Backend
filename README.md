@@ -174,9 +174,10 @@ flowchart TB
     API -->|JSON results| RQ
     RQ --> SQ
 
-</details>
+</details>```
 <details>
  <summary><strong>Sequence diagram</strong></summary>
+```mermaid
 sequenceDiagram
     autonumber
 
@@ -216,7 +217,7 @@ sequenceDiagram
     FE -->> U: Shows automaticly recognized item
 
 
-</details>
+</details>```
 <details>
 <summary><strong>API documentation</strong></summary>
 
@@ -260,7 +261,7 @@ Endpoints explained: [docs/api.md](docs/api.md)
   
   (Documentation: https://docs.csc.fi/cloud/rahti/)
 
-</details>```
+</details>
 ## Running backend locally
 1. Clone the repository
    git clone https://github.com/Varustevahti/Backend.git

@@ -173,7 +173,7 @@ flowchart TB
     API --> DB
     API -->|JSON results| RQ
     RQ --> SQ
-```
+\`\`\`
 </details>
 <details>
  <summary><strong>Sequence diagram</strong></summary>
@@ -214,8 +214,7 @@ sequenceDiagram
     BE -->> FE: 200 OK + predicted data
 
     FE -->> U: Shows automaticly recognized item
-```
-```
+\`\`\`
 </details>
 <details>
 <summary><strong>API documentation</strong></summary>

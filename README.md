@@ -29,7 +29,7 @@
   such as family items or ice-hockey team gear.
 </details>
 </details>
----
+
 
 <details>
   <summary><strong>Frontend (React Native + Expo)</strong></summary>
@@ -173,11 +173,11 @@ flowchart TB
     API --> DB
     API -->|JSON results| RQ
     RQ --> SQ
-
-</details>```
+```
+</details>
 <details>
  <summary><strong>Sequence diagram</strong></summary>
-```mermaid
+  ```mermaid
 sequenceDiagram
     autonumber
 
@@ -215,9 +215,9 @@ sequenceDiagram
     BE -->> FE: 200 OK + predicted data
 
     FE -->> U: Shows automaticly recognized item
+```
 
-
-</details>```
+</details>
 <details>
 <summary><strong>API documentation</strong></summary>
 

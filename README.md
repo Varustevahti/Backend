@@ -141,7 +141,6 @@ flowchart TB
 
     CAM -->|image upload| RQ
     RQ -->|HTTPS POST| API
-    API --> FS
     API --> INFER
     API --> DB
     API -->|JSON results| RQ

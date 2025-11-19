@@ -453,6 +453,8 @@ npx expo install react-native-paper expo-image-picker @react-navigation/native @
 ```bash
 npm install @react-navigation/native-stack @react-navigation/bottom-tabs
 ```
+---
+
 ### To stars the project 
 ```bash
 npx expo start
@@ -477,6 +479,7 @@ scan the QR code using Expo Go
 ## Running backend locally
 1. Clone the repository
    git clone https://github.com/Varustevahti/Backend.git
+   
    cd Backend
 
 3. Create a virtual environment

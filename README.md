@@ -6,14 +6,16 @@
 * Jeremias Pajari: Development operations
 
 ---
-
-### What the project does
+<Details>
+<summary>### What the project does</summary>
 The application is a smart inventory tool designed for tracking personal or shared equipment. Users can add items by taking a photo or selecting from the gallery, fill in details like name, category and location. Groups make it possible for families or teams to manage shared items together, while the My Items page lets users browse, search, and filter their own gear.
 The system includes a React Native (Expo) mobile frontend and a FastAPI backend, which is deployed on CSC Rahti. Frontend is not deployed to App/play stores because of costs, but can be fully used via Expo Go during development. User authentication is implemented with Clerk
-
-### Why the project is usefull
-The project is usefull for people with lots of inventory but dont know where they are. For example hockey families, who have many size of hockey gear and as children grow up, it is easy to keep track what you already have. 
-
+</Details>
+<Details>
+<summary>### What is it?</summary>
+Varustevahti is a mobile inventory tool for storing and organizing sports equipment.
+Users can add items by taking photos, track what they own, and manage group-based inventories such as family items or ice-hockey team´s gear. 
+</Details>
 ---
 
 ## Frontend (React Native + Expo)

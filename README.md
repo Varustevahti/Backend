@@ -262,6 +262,9 @@ Endpoints explained: [docs/api.md](docs/api.md)
   (Documentation: https://docs.csc.fi/cloud/rahti/)
 
 </details>
+</details>
+---
+
 ## Running backend locally
 1. Clone the repository
    git clone https://github.com/Varustevahti/Backend.git

@@ -174,7 +174,11 @@ sequenceDiagram
     FE -->> U: Shows automaticly recognized item
 
 ```
+## API documentation
 
+Our backend´s REST API contains items, categories and groups.
+
+Endpoints explained: [`docs/api.md`](docs/api.md)
 
 #### Used technologies
 - **FastAPI (Python)** – backend API that receives images and returns recognition results.

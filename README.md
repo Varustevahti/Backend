@@ -91,56 +91,7 @@
 
 </details>
 
----
 
-### Cloning project:
-git clone https://github.com/Varustevahti/Frontend.git
-cd Frontend
-
-### Install Expo environment
-```bash
-npx expo install
-```
-### Install dependencies
-#### Expo
-```bash
-npx expo install react-native-paper expo-image-picker @react-navigation/native @react-navigation/bottom-tabs @react-navigation/native-stack @react-native-picker/picker react-native-safe-area-context react-native-screens @expo/vector-icons react-native-gesture-handler react-native-reanimated react-native-get-random-values expo-sqlite
-```
-#### NPM
-```bash
-npm install @react-navigation/native-stack @react-navigation/bottom-tabs
-```
-### To stars the project 
-```bash
-npx expo start
-
-with
-
-iOS-emulator
-npx expo run:ios
-
-Or
-
-Android-emulator
-npx expo run:android
-
-Or
-
-scan the QR code using Expo Go
-```
----
-<details>
- <summary><strong>If you want authentication</strong></summary>
-  
-You have to create .env file, and add your Clerk credentials to it.
-Example:
-
-  
-CLERK_SECRET_KEY=YourOwnSecretKey
-CLERK_ISSUER=YourOWnClerkIssuer
-CLERK_JWKS_URL=YourOwnJWKSURL
-
-</details>
 
 <details>
  <summary><strong>Backend (FastAPI, Python)</strong></summary>
@@ -458,6 +409,59 @@ Create a new group.
 
 ---
 
+### Cloning project:
+git clone https://github.com/Varustevahti/Frontend.git
+
+cd Frontend
+
+### Install Expo environment
+```bash
+npx expo install
+```
+### Install dependencies
+#### Expo
+```bash
+npx expo install react-native-paper expo-image-picker @react-navigation/native @react-navigation/bottom-tabs @react-navigation/native-stack @react-native-picker/picker react-native-safe-area-context react-native-screens @expo/vector-icons react-native-gesture-handler react-native-reanimated react-native-get-random-values expo-sqlite
+```
+#### NPM
+```bash
+npm install @react-navigation/native-stack @react-navigation/bottom-tabs
+```
+### To stars the project 
+```bash
+npx expo start
+
+with
+
+iOS-emulator
+npx expo run:ios
+
+Or
+
+Android-emulator
+npx expo run:android
+
+Or
+
+scan the QR code using Expo Go
+```
+---
+<details>
+ <summary><strong>If you want authentication</strong></summary>
+  
+You have to create .env file, and add your Clerk credentials to it.
+Example:
+
+  
+CLERK_SECRET_KEY=YourOwnSecretKey
+CLERK_ISSUER=YourOWnClerkIssuer
+CLERK_JWKS_URL=YourOwnJWKSURL
+
+</details>
+
+
+---
+
 ## Running backend locally
 1. Clone the repository
    git clone https://github.com/Varustevahti/Backend.git
@@ -508,5 +512,10 @@ http://127.0.0.1:8000/docs
 docker build -t varustevahti-backend .
 ### Run:
 docker run -p 8080:8000 varustevahti-backend
+
+### Cybersecurity
+Our user interface is secured with Clerk´s interface. As far as we know, it doesnt affect our backend, which makes it a huge security risk. We have taken this under our consideration by implementing DANIELIN SQL INJEKTIO TEKSIT TÄHÄN
+Because we didnt deploy our app for customers to use, we left Clerk´s security policies such as two-step verification, email, username & password correct inputs and other validations unconfigurated, for developers to do their work without unnecessary obstacles. 
+Otherwise we have securely kept our .env credentials away from public and we have no hardcoded passwords or other critical information on our codebase
 
 

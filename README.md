@@ -18,7 +18,7 @@ Users can add items by taking photos, track what they own, and manage group-base
 </Details>
 ---
 <details>
-<summary><strong>> Frontend (React Native + Expo)</strong</summary>
+<summary><strong> Frontend (React Native + Expo)</strong</summary>
 Frontend repository:
 https://github.com/Varustevahti/Frontend
 + <details>

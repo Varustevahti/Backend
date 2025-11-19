@@ -7,22 +7,22 @@
 
 ---
 <Details>
-<summary>### What the project does</summary>
+<summary><strong> What the project does</strong></summary>
 The application is a smart inventory tool designed for tracking personal or shared equipment. Users can add items by taking a photo or selecting from the gallery, fill in details like name, category and location. Groups make it possible for families or teams to manage shared items together, while the My Items page lets users browse, search, and filter their own gear.
 The system includes a React Native (Expo) mobile frontend and a FastAPI backend, which is deployed on CSC Rahti. Frontend is not deployed to App/play stores because of costs, but can be fully used via Expo Go during development. User authentication is implemented with Clerk
 </Details>
 <Details>
-<summary>### What is it?</summary>
+<summary><strong> What is it?</strong></summary>
 Varustevahti is a mobile inventory tool for storing and organizing sports equipment.
 Users can add items by taking photos, track what they own, and manage group-based inventories such as family items or ice-hockey team´s gear. 
 </Details>
 ---
-
-## Frontend (React Native + Expo)
+<details>
+<summary><strong>> Frontend (React Native + Expo)</strong</summary>
 Frontend repository:
 https://github.com/Varustevahti/Frontend
-
-### Used Technologies
++ <details>
+<summary><strong>Used Technologies</strong></summary>
 
 - **React Native, Expo** – Framework building the mobile app.
   
@@ -46,12 +46,13 @@ https://github.com/Varustevahti/Frontend
 
 ---
   
-### Mockup pages (made in Google Stitch)
++ <details>
+<summary><strong>> Mockup pages (Google Stitch) & color palette</strong></summary
 | First page | Add item page | Groups page |Inside of a group |
 |:-----------|:------------:|------------:|------------:|
 | <img src="Näyttökuva 2025-08-24 kello 19.49.11.png" alt="first page" width="300"/>      | <img src="Näyttökuva 2025-08-24 kello 19.48.30.png" alt="add item page" width="300"/>       | <img src="Näyttökuva 2025-08-24 kello 19.48.50.png" alt="my groups page" width="300"/>|<img src="Näyttökuva 2025-08-24 kello 19.48.57.png" alt="group: soccer teams items page" width="300"/>
 
-### Color palete
+Color palete
 Background color #F8FBFA<br>
 Text color #52946B <br>
 Text color Selected #0D1A12 <br>
@@ -59,7 +60,7 @@ Fill color #EAF2EC <br>
 Button color bright green #71DE86 <br>
 
 ---
-
++ <details>
 ### Dependencies
 react-native-paper
 expo-image-picker
@@ -73,22 +74,29 @@ react-native-reanimated
 expo/vector-icons
 
 ---
-
+</details>
+</details>
+</details>
+</details>
 ### Cloning project:
 git clone https://github.com/Varustevahti/Frontend.git
 cd Frontend
 
 ### Install Expo environment
+```bash
 npx expo install
-
+```
 ### Install dependencies
 #### Expo
+```bash
 npx expo install react-native-paper expo-image-picker @react-navigation/native @react-navigation/bottom-tabs @react-navigation/native-stack @react-native-picker/picker react-native-safe-area-context react-native-screens @expo/vector-icons react-native-gesture-handler react-native-reanimated react-native-get-random-values expo-sqlite
-
+```
 #### NPM
+```bash
 npm install @react-navigation/native-stack @react-navigation/bottom-tabs
-
+```
 ### To stars the project 
+```bash
 npx expo start
 
 with
@@ -104,10 +112,10 @@ npx expo run:android
 Or
 
 scan the QR code using Expo Go
-
+```
 ---
-
-### If you want authentication
+<details>
+ <summary><strong>If you want authentication</strong></summary>
 You have to create .env file, and add your Clerk credentials to it.
 Example:
 ```yaml
@@ -115,7 +123,7 @@ CLERK_SECRET_KEY=YourOwnSecretKey
 CLERK_ISSUER=YourOWnClerkIssuer
 CLERK_JWKS_URL=YourOwnJWKSURL
 ```
-
+</details>
 ---
 
 ## Backend (FastAPI, Python)

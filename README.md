@@ -174,7 +174,7 @@ sequenceDiagram
     FE -->> U: Shows automaticly recognized item
 
 ```
-## API documentation
+#### API documentation
 
 Our backend´s REST API contains items, categories and groups.
 

@@ -7,6 +7,8 @@
 
 ---
 <details>
+  <summary><strong>About the Varustevahti</strong></summary>
+<details>
   <summary><strong>What the project does</strong></summary>
 
   The application is a smart inventory tool designed for tracking personal or shared equipment.
@@ -26,7 +28,7 @@
   Users can add items by taking photos, track what they own, and manage group-based inventories
   such as family items or ice-hockey team gear.
 </details>
-
+</details>
 ---
 
 <details>
@@ -38,19 +40,19 @@
   <details>
     <summary><strong>Used Technologies</strong></summary>
 
-    - **React Native, Expo** – Framework for the mobile app  
+    - React Native, Expo – Framework for the mobile app  
       https://docs.expo.dev/
 
-    - **React Navigation** – Page navigation  
+    - React Navigation – Page navigation  
       https://reactnavigation.org/
 
-    - **React Native Paper** – UI components  
+    - React Native Paper – UI components  
       https://callstack.github.io/react-native-paper/
 
-    - **Axios** – HTTP requests  
+    - Axios – HTTP requests  
       https://axios-http.com/docs/intro
 
-    - **Expo SQLite** – Local history storage  
+    - Expo SQLite – Local history storage  
       https://docs.expo.dev/versions/latest/sdk/sqlite/
   </details>
 
@@ -61,7 +63,7 @@
     |------------|--------------:|-------------:|-------------:|
     | <img src="Näyttökuva 2025-08-24 kello 19.49.11.png" width="300"/> | <img src="Näyttökuva 2025-08-24 kello 19.48.30.png" width="300"/> | <img src="Näyttökuva 2025-08-24 kello 19.48.50.png" width="300"/> | <img src="Näyttökuva 2025-08-24 kello 19.48.57.png" width="300"/> |
 
-    **Color palette**
+    Color palette
 
     - Background: `#F8FBFA`  
     - Text: `#52946B`  
@@ -129,21 +131,24 @@ scan the QR code using Expo Go
 ---
 <details>
  <summary><strong>If you want authentication</strong></summary>
+  
 You have to create .env file, and add your Clerk credentials to it.
 Example:
-```yaml
+
+  
 CLERK_SECRET_KEY=YourOwnSecretKey
 CLERK_ISSUER=YourOWnClerkIssuer
 CLERK_JWKS_URL=YourOwnJWKSURL
-```
+
 </details>
 ---
+<details>
+ <summary><strong>Backend (FastAPI, Python)</strong></summary>
 
-## Backend (FastAPI, Python)
 
 
-
-### Application architecture
+<details>
+    <summary><strong>Application architecture</strong></summary>
 
 ```mermaid
 flowchart TB
@@ -168,9 +173,10 @@ flowchart TB
     API --> DB
     API -->|JSON results| RQ
     RQ --> SQ
-```
-### Sequence diagram
-```mermaid
+
+</details>
+<details>
+ <summary><strong>Sequence diagram</strong></summary>
 sequenceDiagram
     autonumber
 
@@ -209,48 +215,52 @@ sequenceDiagram
 
     FE -->> U: Shows automaticly recognized item
 
-```
----
 
-#### API documentation
+</details>
+<details>
+<summary><strong>API documentation</strong></summary>
 
 Our backend´s REST API contains items, categories and groups.
 
-Endpoints explained: [`docs/api.md`](docs/api.md)
+Endpoints explained: [docs/api.md](docs/api.md)
 
----
+</details>
+ <details>
+ <summary><strong>Used technologies</strong></summary>
 
-#### Used technologies
-- **FastAPI (Python)** – backend API that receives images and returns recognition results.
+- FastAPI (Python) – backend API that receives images and returns recognition results.
   
   (Documentation: https://fastapi.tiangolo.com/)
   
-- **SQLite** – database for storing items and recognition history.
+- SQLite – database for storing items and recognition history.
   
   (Documentation: https://sqlite.org/docs.html)
 
+</details>
+<details>
+<summary><strong>Machine Learning</strong></summary>
 
-
-#### Machine Learning
-- **PyTorch** – to load and run the image recognition model.
+- PyTorch – to load and run the image recognition model.
   
   (Documentation: https://docs.pytorch.org/tutorials/index.html)
 
-#### Tools
-- **Docker** – to setup backend, machine learning and frontend all in one.
+</details>
+<details>
+<summary><strong>Tools</strong></summary>
+
+- Docker – to setup backend, machine learning and frontend all in one.
   
   (Documentation: https://docs.docker.com/)
   
-- **GitHub** – for version control and collaboration.
+- GitHub – for version control and collaboration.
   
   (Documentation: https://docs.github.com/en)
   
-- **CSC Rahti** - Deployment
+- CSC Rahti - Deployment
   
   (Documentation: https://docs.csc.fi/cloud/rahti/)
 
----
-
+</details>```
 ## Running backend locally
 1. Clone the repository
    git clone https://github.com/Varustevahti/Backend.git

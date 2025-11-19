@@ -422,8 +422,14 @@ CLERK_JWKS_URL=YourOwnJWKSURL
 
 <details>
 <summary><strong>Cybersecurity</strong></summary>
-Our user interface is secured with Clerk´s interface. As far as we know, it doesnt affect our backend, which makes it a huge security risk. We have taken this under our consideration by implementing DANIELIN SQL INJEKTIO TEKSIT TÄHÄN
+Our user interface is secured with Clerk´s interface. But it doesnt operate on our backend, which makes it a huge security risk. We have taken this under our consideration and we have implemented several backend security mechanisms using FastAPI and SQLAlchemy´s ORM:
+  - Every request to API is validated using Pydantic models, ensuring correct data types and preventing unexpected input        from reaching the database
+  - Internal errors are not returned to client. FastAPI returns generic error messages while detailed exceptions are logged     else where, preventing possible leakage of sensitive information.
+  - All database operations use SQLAlchemy ORM query builder instead of raw SQL strings. This ORM layer ensures that user-      controlled data is allways parametrized, eliminating SQL-injection vulnerabilities.
+Clerks user_id can be connected to our owner_id, then each user can access, only their own data, which could have increased our cybersecurity alot.
+  
 Because we didnt deploy our app for customers to use, we left Clerk´s security policies such as two-step verification, email, username & password correct inputs and other validations unconfigurated, for developers to do their work without unnecessary obstacles. 
+
 Otherwise we have securely kept our .env credentials away from public and we have no hardcoded passwords or other critical information on our codebase
 </details>
 

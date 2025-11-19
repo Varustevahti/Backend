@@ -11,6 +11,7 @@ class Item(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, nullable = False)
     location = Column(String, index=True)
+    location_id = Column(Integer, ForeignKey("locations.id"), nullable=True)
     desc = Column(String)                 # mallitulos (label)
     owner = Column(String)
     image = Column(String, nullable=True) # image file path
@@ -24,6 +25,7 @@ class Item(Base):
     # relationships
     category = relationship("Category", back_populates="items")
     group = relationship("Group", back_populates="items")
+    location_ref = relationship("Location", back_populates="items")
 
 class Category(Base):
     __tablename__ = "categories"
@@ -37,3 +39,11 @@ class Group(Base):
     name = Column(String, unique=True, index=True)  # <-- KORJATTU
     items = relationship("Item", back_populates="group")
 
+class Location(Base):
+    __tablename__ = "locations"
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, unique=True, index=True, nullable=False)
+    description = Column(String, nullable=True)
+    owner = Column(String, nullable=True)
+
+    items = relationship("Item", back_populates="location_ref")

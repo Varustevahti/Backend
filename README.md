@@ -173,7 +173,11 @@ flowchart TB
     API --> DB
     API -->|JSON results| RQ
     RQ --> SQ
-
+```
+</details>
+<details>
+ <summary><strong>Sequence diagram</strong></summary>
+  ```mermaid
 sequenceDiagram
     autonumber
     participant U as User

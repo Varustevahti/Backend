@@ -7,76 +7,89 @@
 
 ---
 <details>
-<summary><strong> What the project does</strong></summary>
-  
-The application is a smart inventory tool designed for tracking personal or shared equipment. Users can add items by taking a photo or selecting from the gallery, fill in details like name, category and location. Groups make it possible for families or teams to manage shared items together, while the My Items page lets users browse, search, and filter their own gear.
-The system includes a React Native (Expo) mobile frontend and a FastAPI backend, which is deployed on CSC Rahti. Frontend is not deployed to App/play stores because of costs, but can be fully used via Expo Go during development. User authentication is implemented with Clerk
+  <summary><strong>What the project does</strong></summary>
+
+  The application is a smart inventory tool designed for tracking personal or shared equipment.
+  Users can add items by taking a photo or selecting from the gallery, and fill in details like
+  name, category and location. Groups make it possible for families or teams to manage shared items
+  together, while the My Items page lets users browse, search, and filter their own gear.
+
+  The system includes a React Native (Expo) mobile frontend and a FastAPI backend deployed on CSC Rahti.
+  The frontend is not deployed to App/Play stores due to cost, but can be fully used via Expo Go during development.
+  User authentication is implemented with Clerk.
 </details>
+
 <details>
-<summary><strong> What is it?</strong></summary>
+  <summary><strong>What is it?</strong></summary>
   
-Varustevahti is a mobile inventory tool for storing and organizing sports equipment.
-Users can add items by taking photos, track what they own, and manage group-based inventories such as family items or ice-hockey team´s gear. 
+  Varustevahti is a mobile inventory tool for storing and organizing sports equipment.
+  Users can add items by taking photos, track what they own, and manage group-based inventories
+  such as family items or ice-hockey team gear.
 </details>
+
 ---
+
 <details>
-<summary><strong> Frontend (React Native + Expo)</strong</summary>
-  
-Frontend repository:
-https://github.com/Varustevahti/Frontend
+  <summary><strong>Frontend (React Native + Expo)</strong></summary>
 
-### Used Technologies
+  Frontend repository: 
+  https://github.com/Varustevahti/Frontend
 
-- **React Native, Expo** – Framework building the mobile app.
-  
-   (Documentation: https://docs.expo.dev/)
-  
-- **React Navigation** – Navigation between screens.
-  
-  (Documentation: https://reactnavigation.org/docs/getting-started/)
-  
-- **React Native Paper** – to style the mobile app.
-  
-  (Documentation: https://callstack.github.io/react-native-paper/)
-  
-- **Axios** – For making HTTP requests to the backend API.
-  
-  (Documentation: https://axios-http.com/docs/intro)
-  
-- **Expo SQLite** - For local history storage inside the app.
-  
-  (Documentation: https://docs.expo.dev/versions/latest/sdk/sqlite/)
+  <details>
+    <summary><strong>Used Technologies</strong></summary>
 
----
-  
- Mockup pages (Google Stitch) & color palette
-| First page | Add item page | Groups page |Inside of a group |
-|:-----------|:------------:|------------:|------------:|
-| <img src="Näyttökuva 2025-08-24 kello 19.49.11.png" alt="first page" width="300"/>      | <img src="Näyttökuva 2025-08-24 kello 19.48.30.png" alt="add item page" width="300"/>       | <img src="Näyttökuva 2025-08-24 kello 19.48.50.png" alt="my groups page" width="300"/>|<img src="Näyttökuva 2025-08-24 kello 19.48.57.png" alt="group: soccer teams items page" width="300"/>
+    - **React Native, Expo** – Framework for the mobile app  
+      https://docs.expo.dev/
 
-Color palete
-Background color #F8FBFA<br>
-Text color #52946B <br>
-Text color Selected #0D1A12 <br>
-Fill color #EAF2EC <br>
-Button color bright green #71DE86 <br>
+    - **React Navigation** – Page navigation  
+      https://reactnavigation.org/
 
----
+    - **React Native Paper** – UI components  
+      https://callstack.github.io/react-native-paper/
 
-### Dependencies
-react-native-paper
-expo-image-picker
-react-navigation
-@react-navigation/native (implied)
-@react-navigation/bottom-tabs (implied)
-react-native-screens (for react-navigation)
-react-native-safe-area-context
-react-native-gesture-handler
-react-native-reanimated
-expo/vector-icons
+    - **Axios** – HTTP requests  
+      https://axios-http.com/docs/intro
 
----
+    - **Expo SQLite** – Local history storage  
+      https://docs.expo.dev/versions/latest/sdk/sqlite/
+  </details>
+
+  <details>
+    <summary><strong>Mockup pages (Google Stitch) & color palette</strong></summary>
+
+    | First page | Add item page | Groups page | Inside group |
+    |------------|--------------:|-------------:|-------------:|
+    | <img src="Näyttökuva 2025-08-24 kello 19.49.11.png" width="300"/> | <img src="Näyttökuva 2025-08-24 kello 19.48.30.png" width="300"/> | <img src="Näyttökuva 2025-08-24 kello 19.48.50.png" width="300"/> | <img src="Näyttökuva 2025-08-24 kello 19.48.57.png" width="300"/> |
+
+    **Color palette**
+
+    - Background: `#F8FBFA`  
+    - Text: `#52946B`  
+    - Selected Text: `#0D1A12`  
+    - Fill: `#EAF2EC`  
+    - Button: `#71DE86`  
+  </details>
+
+  <details>
+    <summary><strong>Dependencies</strong></summary>
+
+    react-native-paper  
+    expo-image-picker  
+    react-navigation  
+    @react-navigation/native  
+    @react-navigation/bottom-tabs  
+    @react-navigation/native-stack  
+    react-native-screens  
+    react-native-safe-area-context  
+    react-native-gesture-handler  
+    react-native-reanimated  
+    expo/vector-icons  
+    expo-sqlite  
+  </details>
+
 </details>
+
+---
 
 ### Cloning project:
 git clone https://github.com/Varustevahti/Frontend.git

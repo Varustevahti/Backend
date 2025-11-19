@@ -24,8 +24,8 @@ Users can add items by taking photos, track what they own, and manage group-base
   
 Frontend repository:
 https://github.com/Varustevahti/Frontend
-+ <details>
-<summary><strong>Used Technologies</strong></summary>
+
+### Used Technologies
 
 - **React Native, Expo** – Framework building the mobile app.
   
@@ -49,8 +49,7 @@ https://github.com/Varustevahti/Frontend
 
 ---
   
-+ <details>
-<summary><strong>> Mockup pages (Google Stitch) & color palette</strong></summary
+ Mockup pages (Google Stitch) & color palette
 | First page | Add item page | Groups page |Inside of a group |
 |:-----------|:------------:|------------:|------------:|
 | <img src="Näyttökuva 2025-08-24 kello 19.49.11.png" alt="first page" width="300"/>      | <img src="Näyttökuva 2025-08-24 kello 19.48.30.png" alt="add item page" width="300"/>       | <img src="Näyttökuva 2025-08-24 kello 19.48.50.png" alt="my groups page" width="300"/>|<img src="Näyttökuva 2025-08-24 kello 19.48.57.png" alt="group: soccer teams items page" width="300"/>
@@ -63,7 +62,7 @@ Fill color #EAF2EC <br>
 Button color bright green #71DE86 <br>
 
 ---
-+ <details>
+
 ### Dependencies
 react-native-paper
 expo-image-picker
@@ -78,9 +77,7 @@ expo/vector-icons
 
 ---
 </details>
-</details>
-</details>
-</details>
+
 ### Cloning project:
 git clone https://github.com/Varustevahti/Frontend.git
 cd Frontend

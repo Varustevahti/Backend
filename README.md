@@ -180,7 +180,6 @@ flowchart TB
   ```mermaid
 sequenceDiagram
     autonumber
-
     participant U as User
     participant FE as Expo Frontend (Mobile)
     participant BE as FastAPI Backend (Rahti)
@@ -216,7 +215,6 @@ sequenceDiagram
 
     FE -->> U: Shows automaticly recognized item
 ```
-
 </details>
 <details>
 <summary><strong>API documentation</strong></summary>

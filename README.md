@@ -174,6 +174,7 @@ flowchart TB
     API -->|JSON results| RQ
     RQ --> SQ
 ```
+```
 </details>
 <details>
  <summary><strong>Sequence diagram</strong></summary>

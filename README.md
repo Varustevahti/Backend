@@ -216,6 +216,7 @@ sequenceDiagram
 
     FE -->> U: Shows automaticly recognized item
 ```
+```
 </details>
 <details>
 <summary><strong>API documentation</strong></summary>

@@ -5,12 +5,16 @@
 * Daniel Thagapsov: Backend
 * Jeremias Pajari: Development operations
 
+---
+
 ### What the project does
 The application is a smart inventory tool designed for tracking personal or shared equipment. Users can add items by taking a photo or selecting from the gallery, fill in details like name, category and location. Groups make it possible for families or teams to manage shared items together, while the My Items page lets users browse, search, and filter their own gear.
 The system includes a React Native (Expo) mobile frontend and a FastAPI backend, which is deployed on CSC Rahti. Frontend is not deployed to App/play stores because of costs, but can be fully used via Expo Go during development. User authentication is implemented with Clerk
 
 ### Why the project is usefull
 The project is usefull for people with lots of inventory but dont know where they are. For example hockey families, who have many size of hockey gear and as children grow up, it is easy to keep track what you already have. 
+
+---
 
 ## Frontend (React Native + Expo)
 Frontend repository:
@@ -37,6 +41,8 @@ https://github.com/Varustevahti/Frontend
 - **Expo SQLite** - For local history storage inside the app.
   
   (Documentation: https://docs.expo.dev/versions/latest/sdk/sqlite/)
+
+---
   
 ### Mockup pages (made in Google Stitch)
 | First page | Add item page | Groups page |Inside of a group |
@@ -50,6 +56,8 @@ Text color Selected #0D1A12 <br>
 Fill color #EAF2EC <br>
 Button color bright green #71DE86 <br>
 
+---
+
 ### Dependencies
 react-native-paper
 expo-image-picker
@@ -61,6 +69,8 @@ react-native-safe-area-context
 react-native-gesture-handler
 react-native-reanimated
 expo/vector-icons
+
+---
 
 ### Cloning project:
 git clone https://github.com/Varustevahti/Frontend.git
@@ -93,6 +103,8 @@ Or
 
 scan the QR code using Expo Go
 
+---
+
 ### If you want authentication
 You have to create .env file, and add your Clerk credentials to it.
 Example:
@@ -101,6 +113,8 @@ CLERK_SECRET_KEY=YourOwnSecretKey
 CLERK_ISSUER=YourOWnClerkIssuer
 CLERK_JWKS_URL=YourOwnJWKSURL
 ```
+
+---
 
 ## Backend (FastAPI, Python)
 
@@ -174,11 +188,15 @@ sequenceDiagram
     FE -->> U: Shows automaticly recognized item
 
 ```
+---
+
 #### API documentation
 
 Our backend´s REST API contains items, categories and groups.
 
 Endpoints explained: [`docs/api.md`](docs/api.md)
+
+---
 
 #### Used technologies
 - **FastAPI (Python)** – backend API that receives images and returns recognition results.
@@ -188,6 +206,8 @@ Endpoints explained: [`docs/api.md`](docs/api.md)
 - **SQLite** – database for storing items and recognition history.
   
   (Documentation: https://sqlite.org/docs.html)
+
+
 
 #### Machine Learning
 - **PyTorch** – to load and run the image recognition model.
@@ -207,6 +227,7 @@ Endpoints explained: [`docs/api.md`](docs/api.md)
   
   (Documentation: https://docs.csc.fi/cloud/rahti/)
 
+---
 
 ## Running backend locally
 1. Clone the repository
@@ -251,6 +272,8 @@ uvicorn app.main:app --reload
 ```bash
 http://127.0.0.1:8000/docs
 ```
+---
+
 ## Docker instructions
 ### Build: 
 docker build -t varustevahti-backend .

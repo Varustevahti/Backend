@@ -148,8 +148,10 @@ CLERK_JWKS_URL=YourOwnJWKSURL
 
 
 <details>
-    <summary><strong>Application architecture</strong></summary>
-
+    <summary><strong>Architecture diagrams</strong></summary>
+  
+Application architecture:
+  
 ```mermaid
 flowchart TB
     subgraph RN ["React Native App (Expo)"]
@@ -174,6 +176,8 @@ flowchart TB
     API -->|JSON results| RQ
     RQ --> SQ
 ````
+Sequence diagram:
+
   ```mermaid
 sequenceDiagram
     autonumber
@@ -260,6 +264,7 @@ Endpoints explained: [docs/api.md](docs/api.md)
 
 </details>
 </details>
+
 ---
 
 ## Running backend locally

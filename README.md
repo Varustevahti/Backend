@@ -214,8 +214,10 @@ sequenceDiagram
     BE -->> FE: 200 OK + predicted data
 
     FE -->> U: Shows automaticly recognized item
-````
+``````````````````````
 </details>
+
+
 <details>
 <summary><strong>API documentation</strong></summary>
 

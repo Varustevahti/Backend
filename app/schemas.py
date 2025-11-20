@@ -80,4 +80,4 @@ class ItemModel(ItemBase):
     timestamp: Optional[datetime]
 
     class Config:
-        from_attributesde = True
+        from_attributes = True

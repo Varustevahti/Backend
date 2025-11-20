@@ -11,7 +11,7 @@ class CategoryModel(CategoryBase):
     id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 # Group
@@ -23,7 +23,7 @@ class GroupModel(GroupBase):
     id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 # Location
@@ -41,7 +41,7 @@ class LocationModel(LocationBase):
     id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 # Item
@@ -80,4 +80,4 @@ class ItemModel(ItemBase):
     timestamp: Optional[datetime]
 
     class Config:
-        orm_mode = True
+        from_attributesde = True

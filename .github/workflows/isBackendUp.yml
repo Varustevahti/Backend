@@ -1,0 +1,14 @@
+name: Is Backend up ?
+on:
+  workflow_dispatch:
+jobs:
+  backend-check:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./scripts
+    steps:
+      - name: checkout
+        uses: actions/checkout@v5
+      - name:
+        run: bash  .sh

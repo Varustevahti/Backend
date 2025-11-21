@@ -7,8 +7,10 @@
 
 ---
 <details>
-  <summary><strong>About the Varustevahti</strong></summary>
+  <summary><strong>About the Varustevahti</strong></summary> 
+  
 <details>
+  
   <summary><strong>What the project does</strong></summary>
 
   The application is a smart inventory tool designed for tracking personal or shared equipment.
@@ -27,6 +29,43 @@
   Varustevahti is a mobile inventory tool for storing and organizing sports equipment.
   Users can add items by taking photos, track what they own, and manage group-based inventories
   such as family items or ice-hockey team gear.
+</details>
+
+<details>
+  <summary><strong>How to use</strong></summary>
+  
+  You have few screen for different purposes:
+  My Items: 
+  You can search from your items, just by typing few letters.
+  in this screen you see your few of your items. 
+  Your categories, in where your gear belongs. 
+  Recent items show the latest items you have put in or changed the info.
+  You can also check your stuff by locations.
+  All the headers also open different screens.
+
+  If you tap any single item. It is opened in new screen where you can change the details of the item. 
+  Here you can also set price and put the item on market. Or even delete an item.
+
+  Add Item:
+  In this screen you add items to your inventory. 
+  Adding photo without typing the name first sends the image to backend for AI identification. 
+  You get suggested name and gategory back. After this you can add other info if you want, including
+  location, description, size etc. The only mandatory info is name.
+
+  Market:
+  You can see all the items people have put on market. You see the name and price at this time.
+  You can search from market and if you want to check details just tap on the item name.
+  This open item in new window. Unfotunately you can't see picture of the item. 
+  In the future you should be able to send message to the owner by pushing a button, but this feature is still
+  unavailable.
+
+  Locations:
+  In here you can add location for your gear.
+
+  Profile:
+  This includes trash can - just in case you want to see what you have not allready deleted locally.
+  You can also sync with backend just by pushing a button if you want.
+  
 </details>
 </details>
 

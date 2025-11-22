@@ -57,7 +57,7 @@
   You can search from market and if you want to check details just tap on the item name.
   This open item in new window. Unfotunately you can't see picture of the item. 
   In the future you should be able to send message to the owner by pushing a button, but this feature is still
-  unavailable.
+  unavailable. It requires backend support for authenticaiting users and securely giving away user data.
 
   Locations:
   In here you can add location for your gear.
@@ -65,6 +65,11 @@
   Profile:
   This includes trash can - just in case you want to see what you have not allready deleted locally.
   You can also sync with backend just by pushing a button if you want.
+
+  Groups: <Feature not yet develop>
+  Groups is not yet developed. Groups needs a good backend support which does not exist. 
+  Groups would able many people to track same stuff. For example football teams to see how many balls,
+  cones, jerseys etc they have. Or a scout group to follow who has the big tent now etc
   
 </details>
 </details>
@@ -212,6 +217,7 @@ sequenceDiagram
 
 <details>
 <summary><strong>API documentation</strong></summary>
+
 
 # Varustevahti API
 
@@ -473,6 +479,16 @@ Otherwise we have securely kept our .env credentials away from public and we hav
 </details>
 
 ---
+
+### ⚠️ Security concerns
+
+**Do not store any sensitive or valuable information in Rahti at this time!**
+
+- The database currently **lacks established cybersecurity protections**.
+- There is **no authentication, authorization, or data validation** in place.
+- The database is **fully open and accessible to anyone**.
+
+A more detailed security description will be provided on **24.11.2025**.
 
 ### Cloning project:
 git clone https://github.com/Varustevahti/Frontend.git

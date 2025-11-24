@@ -487,8 +487,10 @@ Otherwise we have securely kept our .env credentials away from public and we hav
 - The database currently **lacks established cybersecurity protections**.
 - There is **no authentication, authorization, or data validation** in place.
 - The database is **fully open and accessible to anyone**.
-
-A more detailed security description will be provided on **24.11.2025**.
+- **Backend can receive requests directly from any source**, as it currently does not require a strict origin.
+- As Clerk is only enforced on the front-end side, **users can modify any resources**
+- Less relevant to our project scope, but no rate limiting, meaning **no defense against request flooding or DDoS**
+- As the back-end does not validate using a Clerk token, the **front-end's authentication is basically purely for ease of use, and not for security**
 
 ---
 

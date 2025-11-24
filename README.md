@@ -490,6 +490,8 @@ Otherwise we have securely kept our .env credentials away from public and we hav
 
 A more detailed security description will be provided on **24.11.2025**.
 
+---
+
 ### Cloning project:
 git clone https://github.com/Varustevahti/Frontend.git
 

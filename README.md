@@ -490,7 +490,7 @@ Otherwise we have securely kept our .env credentials away from public and we hav
 - **Backend can receive requests directly from any source**, as it currently does not require a strict origin.
 - As Clerk is only enforced on the front-end side, **users can modify any resources**
 - Less relevant to our project scope, but no rate limiting, meaning **no defense against request flooding or DDoS**
-- As the back-end does not validate using a Clerk token, the **front-end's authentication is basically purely for ease of use, and not for security**
+- As the back-end does not validate using a Clerk token, the **front-end's authentication is only used for sorting out and indentifying user's own items, not for security per se**
 
 ---
 
